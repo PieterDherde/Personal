@@ -1,0 +1,53 @@
+{
+  "services": [
+    {
+      "name": "stash",
+      "image": "stashapp/stash:latest",
+      "environment": {
+        "STASH_STASH": "/data/",
+        "STASH_GENERATED": "/generated/",
+        "STASH_METADATA": "/metadata/",
+        "STASH_CACHE": "/cache/",
+        "STASH_PORT": "9999"
+      },
+      "internalPort": 9999,
+      "volumes": [
+        {
+          "hostPath": "$/etc/localtime",
+          "containerPath": "/etc/localtime"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}",
+          "containerPath": "/root/.stash"
+        },
+        {
+          "hostPath": "${ROOT_FOLDER_HOST}/media/}",
+          "containerPath": "/data"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR/metadata}",
+          "containerPath": "/metadata"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR/cache}",
+          "containerPath": "/cache"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR/blobs}",
+          "containerPath": "/blobs"
+        {
+          "hostPath": "${APP_DATA_DIR/generated}",
+          "containerPath": "/generated"
+        },
+        },
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-file": "10",
+          "max-size": "2m"
+        }
+      }
+    }
+  ]
+}

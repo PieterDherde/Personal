@@ -1,0 +1,18 @@
+{
+  "name": "Stash",
+  "available": true,
+  "port": 9999,
+  "exposable": true,
+  "dynamic_config": true,
+  "id": "stashapp",
+  "description": "A self-hosted webapp written in Go which organizes and serves your porn.",
+  "tipi_version": 1,
+  "version": "0.28.1",
+  "categories": ["media"],
+  "short_desc": "Secret stash",
+  "author": "stashapp",
+  "source": "https://github.com/stashapp/stash",
+  "supported_architectures": ["amd64"],
+  "created_at": 1747165003,
+  "$schema": "../app-info-schema.json"
+}

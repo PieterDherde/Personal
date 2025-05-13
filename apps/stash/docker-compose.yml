@@ -1,0 +1,49 @@
+services:
+  slskd:
+    image: slskd/slskd:0.22.5
+    restart: unless-stopped
+    networks:
+      slskd_migrated_network:
+        gw_priority: 0
+      tipi_main_network:
+        gw_priority: 1
+    environment:
+      SLSKD_WEB_USER: ${SLSKD_WEB_USER}
+      SLSKD_WEB_PASSWORD: ${SLSKD_WEB_PASSWORD}
+      SLSKD_USER: ${SLSKD_USER}
+      SLSKD_PASSWORD: ${SLSKD_PASSWORD}
+      SLSKD_REMOTE_CONFIGURATION: ${SLSKD_REMOTE_CONFIGURATION}
+      SLSKD_CONFIG: /app/data/slskd.yml
+      SLSKD_SHARED_DIR: /shared
+    ports:
+      - ${APP_PORT}:5030
+    volumes:
+      - ${APP_DATA_DIR}:/app
+      - ${ROOT_FOLDER_HOST}/media/downloads/complete:/downloads
+      - ${ROOT_FOLDER_HOST}/media/downloads/incomplete:/incomplete
+      - ${ROOT_FOLDER_HOST}/media/:/shared
+    labels:
+      generated: true
+      traefik.enable: true
+      traefik.docker.network: runtipi_tipi_main_network
+      traefik.http.middlewares.slskd-migrated-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.slskd-migrated.loadbalancer.server.port: "5030"
+      traefik.http.routers.slskd-migrated-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.slskd-migrated-insecure.entrypoints: web
+      traefik.http.routers.slskd-migrated-insecure.service: slskd-migrated
+      traefik.http.routers.slskd-migrated-insecure.middlewares: slskd-migrated-web-redirect
+      traefik.http.routers.slskd-migrated.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.slskd-migrated.entrypoints: websecure
+      traefik.http.routers.slskd-migrated.service: slskd-migrated
+      traefik.http.routers.slskd-migrated.tls.certresolver: myresolver
+      runtipi.managed: true
+networks:
+  tipi_main_network:
+    name: runtipi_tipi_main_network
+    external: true
+  slskd_migrated_network:
+    external: false
+    ipam:
+      config:
+        - subnet: 10.128.14.0/24
+
