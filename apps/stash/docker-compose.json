@@ -21,23 +21,23 @@
           "containerPath": "/root/.stash"
         },
         {
-          "hostPath": "${ROOT_FOLDER_HOST}/media/}",
+          "hostPath": "${ROOT_FOLDER_HOST}/media/",
           "containerPath": "/data"
         },
         {
-          "hostPath": "${APP_DATA_DIR/metadata}",
+          "hostPath": "${APP_DATA_DIR}/metadata",
           "containerPath": "/metadata"
         },
         {
-          "hostPath": "${APP_DATA_DIR/cache}",
+          "hostPath": "${APP_DATA_DIR}/cache",
           "containerPath": "/cache"
         },
         {
-          "hostPath": "${APP_DATA_DIR/blobs}",
+          "hostPath": "${APP_DATA_DIR}/blobs",
           "containerPath": "/blobs"
         },
         {
-          "hostPath": "${APP_DATA_DIR/generated}",
+          "hostPath": "${APP_DATA_DIR}/generated",
           "containerPath": "/generated"
         }
       ]
