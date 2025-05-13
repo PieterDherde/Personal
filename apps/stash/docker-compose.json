@@ -35,19 +35,12 @@
         {
           "hostPath": "${APP_DATA_DIR/blobs}",
           "containerPath": "/blobs"
+        },
         {
           "hostPath": "${APP_DATA_DIR/generated}",
           "containerPath": "/generated"
-        },
-        },
-      ],
-      "logging": {
-        "driver": "json-file",
-        "options": {
-          "max-file": "10",
-          "max-size": "2m"
         }
-      }
+      ]
     }
   ]
 }
