@@ -13,10 +13,6 @@
       "internalPort": 9999,
       "volumes": [
         {
-          "hostPath": "$/etc/localtime",
-          "containerPath": "/etc/localtime"
-        },
-        {
           "hostPath": "${APP_DATA_DIR}",
           "containerPath": "/root/.stash"
         },
