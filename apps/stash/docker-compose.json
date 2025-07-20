@@ -40,7 +40,10 @@
           "hostPath": "${APP_DATA_DIR}/generated",
           "containerPath": "/generated"
         }
-      ]
+      ],
+      "extraLabels": {
+        "traefik.http.routers.{{RUNTIPI_APP_ID}}.tls=true"
+      }
     }
   ]
 }
