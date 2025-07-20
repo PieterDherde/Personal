@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "stash",
-      "image": "stashapp/stash:latest",
+      "image": "stashapp/stash:28.1",
       "environment": {
         "STASH_STASH": "/data/",
         "STASH_GENERATED": "/generated/",
@@ -13,7 +13,11 @@
       "internalPort": 9999,
       "volumes": [
         {
-          "hostPath": "${APP_DATA_DIR}",
+          "hostPath": "/etc/localtime",
+          "containerPath": "/etc/localtime:ro"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/config",
           "containerPath": "/root/.stash"
         },
         {
