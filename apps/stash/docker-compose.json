@@ -42,7 +42,7 @@
         }
       ],
       "extraLabels": {
-        "traefik.http.routers.{{RUNTIPI_APP_ID}}.tls=true"
+        "traefik.http.routers.stash.tls=true"
       }
     }
   ]
