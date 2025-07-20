@@ -5,7 +5,7 @@
   "exposable": true,
   "dynamic_config": true,
   "id": "stashapp",
-  "description": "A self-hosted webapp written in Go which organizes and serves your porn.",
+  "description": "A self-hosted webapp written in Go which organizes and serves your adult material.",
   "tipi_version": 1,
   "version": "0.28.1",
   "categories": ["media"],
@@ -13,6 +13,8 @@
   "author": "stashapp",
   "source": "https://github.com/stashapp/stash",
   "supported_architectures": ["amd64"],
+  "uid": 1000,
+  "gid": 1000,
   "created_at": 1747165003,
   "$schema": "../app-info-schema.json"
 }
