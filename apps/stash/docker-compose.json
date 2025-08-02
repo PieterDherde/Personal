@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "stash",
-      "image": "stashapp/stash:0.28.1",
+      "image": "stashapp/stash:v0.28.1",
       "environment": {
         "STASH_STASH": "/data/",
         "STASH_GENERATED": "/generated/",
