@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "stash",
-      "image": "stashapp/stash:v0.28.1",
+      "image": "stashapp/stash:0.28.1",
       "environment": {
         "STASH_STASH": "/data/",
         "STASH_GENERATED": "/generated/",
@@ -14,33 +14,61 @@
       "volumes": [
         {
           "hostPath": "/etc/localtime",
-          "containerPath": "/etc/localtime:ro"
+          "containerPath": "/etc/localtime",
+          "readOnly": true,
+          "shared": false,
+          "private": false
         },
         {
-          "hostPath": "${APP_DATA_DIR}/config",
-          "containerPath": "/root/.stash"
+          "hostPath": "./config",
+          "containerPath": "/root/.stash",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
-          "hostPath": "${ROOT_FOLDER_HOST}/media/",
-          "containerPath": "/data"
+          "hostPath": "./data",
+          "containerPath": "/data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
-          "hostPath": "${APP_DATA_DIR}/metadata",
-          "containerPath": "/metadata"
+          "hostPath": "./metadata",
+          "containerPath": "/metadata",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
-          "hostPath": "${APP_DATA_DIR}/cache",
-          "containerPath": "/cache"
+          "hostPath": "./cache",
+          "containerPath": "/cache",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
-          "hostPath": "${APP_DATA_DIR}/blobs",
-          "containerPath": "/blobs"
+          "hostPath": "./blobs",
+          "containerPath": "/blobs",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         },
         {
-          "hostPath": "${APP_DATA_DIR}/generated",
-          "containerPath": "/generated"
+          "hostPath": "./generated",
+          "containerPath": "/generated",
+          "readOnly": false,
+          "shared": false,
+          "private": false
         }
-      ]
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-file": "10",
+          "max-size": "2m"
+        }
+      }
     }
   ]
 }
